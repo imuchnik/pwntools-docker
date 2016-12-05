@@ -15,6 +15,6 @@ RUN apt-get update && \
     pip install --upgrade setuptools && \
     pip install pwntools && \
     groupadd -r pwntools && \
-    useradd -rg pwntools pwntools
+    useradd -mrg pwntools pwntools
 
 USER pwntools
