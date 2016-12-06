@@ -6,6 +6,16 @@ This image contains the [pwntools](https://github.com/Gallopsled/pwntools) CTF f
 Usage
 -----
 
+### Run `checksec`
+
+	$ docker run --rm -v $(pwd)/starcraft:/starcraft robertlarsen/pwntools checksec /starcraft
+	[*] '/starcraft'
+	    Arch:     amd64-64-little
+	    RELRO:    Partial RELRO
+	    Stack:    Canary found
+	    NX:       NX enabled
+	    PIE:      PIE enabled
+
 ### Run `shellcraft`
 
     $ docker run --rm robertlarsen/pwntools shellcraft -f h i386.linux.sh
