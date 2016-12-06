@@ -11,10 +11,13 @@ RUN apt-get update && \
                        binutils-i386-linux-gnu \
                        binutils-mips-linux-gnu \
                        binutils-mips64-linux-gnu && \
-    apt-get install -y python2.7 python-pip python-dev libffi-dev libssl-dev && \
+    apt-get install -y git python2.7 python-pip python-dev libffi-dev libssl-dev && \
     pip install --upgrade setuptools && \
-    pip install pwntools && \
+    pip install requests && \
     groupadd -r pwntools && \
-    useradd -mrg pwntools pwntools
+    useradd -mrg pwntools pwntools && \
+    rm -rf /var/lib/apt/lists/*
+RUN git clone -b 3.2.0 https://github.com/Gallopsled/pwntools.git && \
+    pip install --upgrade --editable pwntools
 
 USER pwntools
