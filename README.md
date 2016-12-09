@@ -8,8 +8,8 @@ Usage
 
 ### Run `checksec`
 
-	$ docker run --rm -v $(pwd)/starcraft:/starcraft robertlarsen/pwntools checksec /starcraft
-	[*] '/starcraft'
+	$ docker run --rm -v $(pwd):/work robertlarsen/pwntools checksec ./starcraft
+	[*] '/work/starcraft'
 	    Arch:     amd64-64-little
 	    RELRO:    Partial RELRO
 	    Stack:    Canary found
@@ -47,8 +47,8 @@ Usage
 
 Here one for the md5 calculator challenge from pwnable.kr.
 
-	$ docker run -it -v $(pwd)/exploit.py:/exploit.py -v $(pwd)/hash:/hash robertlarsen/pwntools python /exploit.py
-	[*] '/hash'
+	$ docker run -it -v $(pwd)/:/work robertlarsen/pwntools python ./exploit.py
+	[*] '/work/hash'
 	    Arch:     i386-32-little
 	    RELRO:    Partial RELRO
 	    Stack:    Canary found
@@ -69,7 +69,7 @@ Here one for the md5 calculator challenge from pwnable.kr.
 
 It's not a pwntools tool but it's inthere so use it.
 
-    $ docker run --rm -v $(pwd)/libc.so:/libc.so robertlarsen/pwntools ROPgadget --binary /libc.so
+    $ docker run --rm -v $(pwd):/work robertlarsen/pwntools ROPgadget --binary ./libc.so
     Gadgets information
     ============================================================
     0x00000000001949c8 : adc ah, ah ; sti ; call qword ptr [rax]

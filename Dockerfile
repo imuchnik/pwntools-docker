@@ -20,4 +20,5 @@ RUN apt-get update && \
 RUN git clone -b 3.2.0 https://github.com/Gallopsled/pwntools.git && \
     pip install --upgrade --editable pwntools
 
+WORKDIR /work
 USER pwntools
