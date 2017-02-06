@@ -1,7 +1,9 @@
-FROM ubuntu:14.04
+FROM ubuntu:14.04.5
 MAINTAINER Robert Larsen <robert@the-playground.dk>
 
 ENV TERM linux
+
+# Install packages
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y software-properties-common && \
@@ -17,8 +19,20 @@ RUN apt-get update && \
     groupadd -r pwntools && \
     useradd -mrg pwntools pwntools && \
     rm -rf /var/lib/apt/lists/*
-RUN git clone -b 3.2.0 https://github.com/Gallopsled/pwntools.git && \
+
+# Install pwntools
+RUN git clone -b 3.3.4 https://github.com/Gallopsled/pwntools.git && \
     pip install --upgrade --editable pwntools
+
+# Install z3
+RUN git clone https://github.com/Z3Prover/z3.git && \
+    cd z3 && \
+    python scripts/mk_make.py --python && \
+    cd build && \
+    make && \
+    make install && \
+    cd / && \
+    rm -rf z3
 
 WORKDIR /work
 USER pwntools

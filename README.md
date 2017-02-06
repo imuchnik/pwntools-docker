@@ -2,6 +2,7 @@ pwntools
 ========
 
 This image contains the [pwntools](https://github.com/Gallopsled/pwntools) CTF framework with all its dependencies.
+Also, I've added the `requests` and `z3` modules as they often come in handy.
 
 Usage
 -----
@@ -65,9 +66,49 @@ Here one for the md5 calculator challenge from pwnable.kr.
 	super.pl
 	$
 
+### Use the `z3` theorem solver:
+
+The `z3` module proves solvability and can show the solution that satisfies a set of pre conditions such as these from a reversing challenge:
+
+	$ cat alexctf_2017_catalyst_username.py 
+	#!/usr/bin/env python
+	
+	from z3 import *
+	from pwn import *
+	
+	# void __fastcall sub_400CDD(char *username)
+	# {
+	#   __int64 c; // [sp+10h] [bp-20h]@1
+	#   __int64 b; // [sp+18h] [bp-18h]@1
+	#   __int64 a; // [sp+20h] [bp-10h]@1
+	# 
+	#   a = *(_DWORD *)username;
+	#   b = *((_DWORD *)username + 1);
+	#   c = *((_DWORD *)username + 2);
+	#   if ( a - b + c != 0x5C664B56 || b + 3 * (c + a) != 0x2E700C7B2LL || c * b != 0x32AC30689A6AD314LL )
+	#   {
+	#     puts("invalid username or password");
+	#     exit(0);
+	#   }
+	# }
+	
+	a, b, c = BitVecs('a b c', 64)
+	s = Solver()
+	s.add(a & 0xffffffff00000000 == 0,
+	      b & 0xffffffff00000000 == 0,
+	      c & 0xffffffff00000000 == 0,
+	      a - b + c == 0x5c664b56,
+	      b + 3 * (c + a) == 0x2e700c7b2,
+	      c * b == 0x32ac30689a6ad314)
+	s.check()
+	m = s.model()
+	print p32(m[a].as_long()) + p32(m[b].as_long()) + p32(m[c].as_long())
+	$ docker run --rm -v $(pwd):/work robertlarsen/pwntools python ./alexctf_2017_catalyst_username.py
+	catalyst_ceo
+
 ### Run `ROPgadget` ():
 
-It's not a pwntools tool but it's inthere so use it.
+It's not a `pwntools` tool but it's inthere so use it.
 
     $ docker run --rm -v $(pwd):/work robertlarsen/pwntools ROPgadget --binary ./libc.so
     Gadgets information
