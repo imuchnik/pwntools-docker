@@ -21,7 +21,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install pwntools
-RUN git clone -b 3.3.4 https://github.com/Gallopsled/pwntools.git && \
+RUN git clone -b 3.7.1 https://github.com/Gallopsled/pwntools.git && \
     pip install --upgrade --editable pwntools
 
 # Install z3
