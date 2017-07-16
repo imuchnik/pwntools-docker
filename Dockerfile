@@ -8,6 +8,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y software-properties-common && \
     apt-add-repository -y ppa:pwntools/binutils && \
+    apt-add-repository -y ppa:fkrull/deadsnakes-python2.7 && \
     apt-get update && \
     apt-get install -y binutils-arm-linux-gnu \
                        binutils-i386-linux-gnu \
