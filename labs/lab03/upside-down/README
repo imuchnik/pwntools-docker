@@ -1,0 +1,16 @@
+ Lab03: upside-down
+===================
+
+   You can implement 'stack' in various other ways. In this weird world,
+   stack goes up, increasing (rather than down, decreasing). Who knows?
+   we were currently living in the weird world; already got used to it.
+
+ - target    : target
+ - type      : local
+ - arch      : 32
+ - level     : 80
+ - points    : 20
+ - uid       : 23080
+ - release   : 08-30-2019 00:00:00
+ - deadline  : 09-13-2019 00:00:00
+ - hashval   : 94C04A07

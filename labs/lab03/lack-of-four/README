@@ -1,0 +1,14 @@
+ Lab03: lack-of-four
+====================
+
+   You cannot ovewrite return address. What can you do?
+
+ - target    : target
+ - type      : local
+ - arch      : 32
+ - level     : 30
+ - points    : 20
+ - uid       : 23030
+ - release   : 08-30-2019 00:00:00
+ - deadline  : 09-13-2019 00:00:00
+ - hashval   : 02B12DD8

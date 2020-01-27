@@ -1,0 +1,14 @@
+ Lab01: bomb101-strcmp
+======================
+
+   Enter the flag got from bomb101-strcmp
+
+ - target    : ../bomb
+ - type      : misc
+ - arch      : 32
+ - level     : 10
+ - points    : 20
+ - uid       : 21010
+ - release   : 08-16-2019 00:00:00
+ - deadline  : 08-30-2019 00:00:00
+ - hashval   : 63F0DDF2

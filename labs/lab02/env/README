@@ -1,0 +1,16 @@
+ Lab02: env
+===========
+
+   In this challenge, you will be exploring layouts (e.g., mappings and
+   addresses) of a running process. Please answer questions that ./target
+   asks.
+
+ - target    : target
+ - type      : misc
+ - arch      : 64
+ - level     : 31
+ - points    : 20
+ - uid       : 22031
+ - release   : 08-23-2019 00:00:00
+ - deadline  : 09-06-2019 00:00:00
+ - hashval   : 2D9A1466
